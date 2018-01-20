@@ -19,8 +19,20 @@ public class RegistrationControllerTest {
     public void shuoldReturnErrorWhenPasswordToShor() {
         Response rezult = new RegistrationController().register("frani" , "123456");
 
-        assertEquals("Hasło za krótkie" , rezult.getMassage());
+        assertEquals("password is too short" , rezult.getMassage());
         assertEquals(false , rezult.isSuccess());
 
     }
+
+    @Test
+    public void shuoldReturnErrorWhenUserExist() {
+
+        Response rezult = new RegistrationController().register("aaa" , "12345678");
+
+        assertEquals("User exist, change name or password" , rezult.getMassage());
+        assertEquals(false , rezult.isSuccess());
+
+    }
+
+
 }
