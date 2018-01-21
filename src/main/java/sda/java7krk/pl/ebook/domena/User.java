@@ -1,4 +1,4 @@
-package sda.java7krk.pl.ebook.registration;
+package sda.java7krk.pl.ebook.domena;
 
 public  class User {
 

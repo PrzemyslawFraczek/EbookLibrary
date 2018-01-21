@@ -1,10 +1,10 @@
-package sda.java7krk.pl.ebook.registration;
+package sda.java7krk.pl.ebook.domena;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserStorage {
-    private Map<String ,User > userList = new HashMap<String, User>();
+    private Map<String , User> userList = new HashMap<String, User>();
 
     public void add(User user) {
         userList.put(user.getName(), user);

@@ -1,6 +1,6 @@
-package sda.java7krk.pl.ebook.registration;
+package sda.java7krk.pl.ebook.View;
 
- class Response {
+ public class Response {
     private boolean success;
     private String massage;
 

@@ -1,9 +1,13 @@
-package sda.java7krk.pl.ebook.registration;
+package sda.java7krk.pl.ebook.register;
 
 
+import sda.java7krk.pl.ebook.domena.User;
+import sda.java7krk.pl.ebook.domena.UserStorage;
+import sda.java7krk.pl.ebook.View.Response;
 
 public class RegistrationController {
     private UserStorage users;
+
 
     public RegistrationController(UserStorage users) {
         this.users = users;

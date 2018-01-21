@@ -1,12 +1,9 @@
-package sda.java7krk.pl.ebook.registration;
+package sda.java7krk.pl.ebook.register;
 
-import org.junit.Before;
+import sda.java7krk.pl.ebook.domena.User;
+import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import sda.java7krk.pl.ebook.View.Response;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
