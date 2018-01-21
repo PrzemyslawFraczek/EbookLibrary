@@ -4,7 +4,6 @@ import sda.java7krk.pl.ebook.View.Response;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 
 public class LoginController {
-
     private UserStorage users ;
 
     public LoginController(UserStorage users) {
@@ -17,7 +16,7 @@ public class LoginController {
 
         Response response = new Response();
 
-        if(users.userExist(name) && users.pswdCorrect(name, password)) {
+        if(users.userExist(name, password)) {
             response.setSuccess(true);
             response.setMassage("Welcome in system");
         }else {
@@ -26,13 +25,5 @@ public class LoginController {
         }
         return response;
 
-    }
-
-    private boolean isUserExist(String name) {
-        return users.userExist(name);
-    }
-
-    private boolean isPasswordTooShort(String password) {
-        return password.length() < 7;
     }
 }

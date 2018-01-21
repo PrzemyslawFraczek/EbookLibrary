@@ -15,6 +15,12 @@ public class UserStorage {
 
     }
     public boolean pswdCorrect(String name, String password) {
-        return users.get(name).getPassword().equals(password);
+    }
+
+    public boolean userExist(String name, String password) {
+        if (userExist(name)) {
+            return users.get(name).getPassword().equals(password);
+        }
+        return false;
     }
 }

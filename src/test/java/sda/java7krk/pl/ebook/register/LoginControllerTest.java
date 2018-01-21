@@ -12,37 +12,41 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LoginControllerTest {
+    private static final String GOOD_LOGIN = "goodLogin";
+    private static final String GOOD_PASSWORD = "goodPassword";
+    private static final String WRONG_PASSWORD = "wrongPassword";
+    private static final String WRONG_LOGIN = "wrongLogin";
+    private static final String PASSWORD_OR_LOGIN_INCORECT = "Password or login incorect";
+
     private UserStorage users = new UserStorage();
-    LoginController loginController = new LoginController(users);
-    String massageIsCorrect = "Password or login incorect";
+    private LoginController loginController = new LoginController(users);
 
     @Before
     public void creatUser() {
-        users.add(new User("goodLogin", "goodPassword"));
+        users.add(new User(GOOD_LOGIN, GOOD_PASSWORD));
     }
 
     @Test
     public void shouldReturnErrorWhenPasswordWrong() {
+        Response result = loginController.checkLogin(GOOD_LOGIN, WRONG_PASSWORD);
 
-        Response result = loginController.checkLogin("goodLogin", "wrongPassword");
-
-        assertEquals(massageIsCorrect, result.getMassage());
+        assertEquals(PASSWORD_OR_LOGIN_INCORECT, result.getMassage());
         assertEquals(false, result.isSuccess());
     }
 
     @Test
     public void shouldReturnErrorWhenLoginIsWrong() {
 
-        Response result = loginController.checkLogin("wrongLogin", "goodPassword");
+        Response result = loginController.checkLogin(WRONG_LOGIN, GOOD_PASSWORD);
 
-        assertEquals(massageIsCorrect, result.getMassage());
+        assertEquals(PASSWORD_OR_LOGIN_INCORECT, result.getMassage());
         assertEquals(false, result.isSuccess());
     }
 
     @Test
     public void shouldReturnTrueWhenLoginSucces() {
 
-        Response result = loginController.checkLogin("goodLogin", "goodPassword");
+        Response result = loginController.checkLogin(GOOD_LOGIN, GOOD_PASSWORD);
 
         assertEquals(true, result.isSuccess());
         assertEquals("Welcome in system", result.getMassage());
