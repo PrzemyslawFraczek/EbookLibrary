@@ -14,21 +14,15 @@ public class LoginController {
 
     public Response checkLogin(String name, String password) {
 
+
         Response response = new Response();
-        if (isPasswordTooShort(password)) {
-            response.setSuccess(false);
-            response.setMassage("password is too short");
 
-        } else if (isUserExist(name)) {
+        if(users.userExist(name) && users.pswdCorrect(name, password)) {
             response.setSuccess(true);
-            response.setMassage("You are in system :)");
-
-
-        } else {
+            response.setMassage("Welcome in system");
+        }else {
             response.setSuccess(false);
-            response.setMassage("User not exist , check your password or login ! ");
-
-
+            response.setMassage("Password or login incorect");
         }
         return response;
 
