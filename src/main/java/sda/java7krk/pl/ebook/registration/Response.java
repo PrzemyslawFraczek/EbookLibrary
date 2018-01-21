@@ -10,6 +10,7 @@ package sda.java7krk.pl.ebook.registration;
 
      public void setMassage(String massage) {
          this.massage = massage;
+
      }
 
      public boolean isSuccess() {

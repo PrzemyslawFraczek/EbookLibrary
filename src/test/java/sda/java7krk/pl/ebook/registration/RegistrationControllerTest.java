@@ -19,7 +19,8 @@ public class RegistrationControllerTest {
     @Test
     public void shuoldRegisterNewUser()
     {
-        Response rezult = new RegistrationController(users).register("franklin", "12345555");
+        RegistrationController registrationController = new RegistrationController(users);
+        Response rezult = registrationController.register("franklin", "12345555");
 
         assertEquals(true , rezult.isSuccess());
         assertTrue(users.userExist("franklin"));
