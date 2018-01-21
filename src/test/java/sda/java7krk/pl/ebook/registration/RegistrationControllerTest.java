@@ -4,13 +4,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
 
 public class RegistrationControllerTest {
-    private List<User> users = new ArrayList<User>();
+    private UserStorage users = new UserStorage();
 
     @Test
     public void shuoldRegisterNewUser()
