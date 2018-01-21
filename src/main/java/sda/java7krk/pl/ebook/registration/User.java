@@ -1,12 +1,12 @@
 package sda.java7krk.pl.ebook.registration;
 
-public  class Users {
+public  class User {
 
     private String password;
     private String name;
 
 
-    public Users(String name, String password) {
+    public User(String name, String password) {
         this.password = password;
         this.name = name;
     }
