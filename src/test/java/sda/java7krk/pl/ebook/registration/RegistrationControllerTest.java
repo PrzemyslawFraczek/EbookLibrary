@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 public class RegistrationControllerTest {
@@ -20,6 +22,7 @@ public class RegistrationControllerTest {
         Response rezult = new RegistrationController(users).register("franklin", "12345555");
 
         assertEquals(true , rezult.isSuccess());
+        assertTrue(users.userExist("franklin"));
     }
 
     @Test
@@ -28,7 +31,7 @@ public class RegistrationControllerTest {
 
         assertEquals("password is too short" , rezult.getMassage());
         assertEquals(false , rezult.isSuccess());
-
+        assertFalse(users.userExist("frani"));
     }
 
     @Test

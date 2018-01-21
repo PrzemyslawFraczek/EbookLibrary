@@ -13,4 +13,9 @@ public class UserStorage {
     public boolean userExist(String name) {
         return UserList.containsKey(name);
     }
+
+    public User creatUser(String name , String password){
+        return new User (name,password);
+    }
+
 }

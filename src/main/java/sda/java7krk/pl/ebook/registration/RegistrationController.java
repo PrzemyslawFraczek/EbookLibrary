@@ -1,6 +1,6 @@
 package sda.java7krk.pl.ebook.registration;
 
-import java.util.Map;
+
 
 public class RegistrationController {
     private UserStorage users;
@@ -14,17 +14,27 @@ public class RegistrationController {
 
         Response response = new Response();
 
-        if (password.length() < 7) {
+        if (isPasswordTooShort(password)) {
             response.setSuccess(false);
             response.setMassage("password is too short");
 
-        }else if (users.userExist(name)) {
-                    response.setMassage("User exist, change name or password");
-                    response.setSuccess(false);
+        }else if (isUserExist(name)) {
+            response.setMassage("User exist, change name or password");
+            response.setSuccess(false);
         }  else {
             response.setSuccess(true);
+            users.add(users.creatUser(name,password));
+
         }
         return response;
+    }
+
+    private boolean isUserExist(String name) {
+        return users.userExist(name);
+    }
+
+    private boolean isPasswordTooShort(String password) {
+        return password.length() < 7;
     }
 
 }
