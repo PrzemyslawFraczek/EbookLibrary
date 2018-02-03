@@ -7,6 +7,9 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -21,13 +24,10 @@ public class LoginControllerTest {
     private UserStorage users = new UserStorage();
     private LoginController loginController = new LoginController(users);
 
-    @Before
-    public void createUser() {
-        users.add(new User(GOOD_LOGIN, GOOD_PASSWORD));
-    }
+
 
     @Test
-    public void shouldReturnErrorWhenPasswordWrong() {
+    public void shouldReturnErrorWhenPasswordWrong() throws FileNotFoundException {
         Response result = loginController.checkLogin(GOOD_LOGIN, WRONG_PASSWORD);
 
         assertEquals(PASSWORD_OR_LOGIN_INCORECT, result.getMassage());
@@ -35,7 +35,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldReturnErrorWhenLoginIsWrong() {
+    public void shouldReturnErrorWhenLoginIsWrong() throws FileNotFoundException {
 
         Response result = loginController.checkLogin(WRONG_LOGIN, GOOD_PASSWORD);
 
@@ -44,7 +44,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenLoginSucces() {
+    public void shouldReturnTrueWhenLoginSucces() throws FileNotFoundException {
 
         Response result = loginController.checkLogin(GOOD_LOGIN, GOOD_PASSWORD);
 

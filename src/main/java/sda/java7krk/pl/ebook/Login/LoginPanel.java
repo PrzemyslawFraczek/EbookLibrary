@@ -2,6 +2,7 @@ package sda.java7krk.pl.ebook.Login;
 
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class LoginPanel {
@@ -13,7 +14,7 @@ public class LoginPanel {
 
     Scanner scanner = new Scanner(System.in);
 
-    public String login() {
+    public String login() throws FileNotFoundException {
         System.out.println("Give me Login");
         String login = scanner.next();
         System.out.println("Give me password");

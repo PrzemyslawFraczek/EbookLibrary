@@ -9,7 +9,7 @@ import java.io.*;
 
 public class RegistrationController {
     private UserStorage users;
-    private UserStorage save = new UserStorage() ;
+    private UserStorage save = new UserStorage(users) ;
     public RegistrationController(UserStorage users) throws IOException {
         this.users = users;
     }
@@ -21,7 +21,7 @@ public class RegistrationController {
             response.setSuccess(false);
             response.setMassage("password is too short");
 
-        }else if (isUserExist(name)) {
+        }else if (users.userExist(name)) {
             response.setSuccess(false);
             response.setMassage("User exist, change name or password");
 
@@ -31,13 +31,7 @@ public class RegistrationController {
             response.setMassage("Well done !!");
             save.save(name,password);
         }
-
-
         return response;
-    }
-
-    private boolean isUserExist(String name) {
-        return users.userExist(name);
     }
 
     private boolean isPasswordTooShort(String password) {

@@ -5,6 +5,7 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
@@ -15,6 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class RegistrationControllerTest {
 
     private UserStorage users = new UserStorage();
+    private File fileTest = new File("testUsers.txt");
 
     @Test
     public void shuoldRegisterNewUser() throws IOException {
@@ -38,7 +40,7 @@ public class RegistrationControllerTest {
     public void shuoldReturnErrorWhenUserExist() throws IOException {
 
 
-        users.add(new User("aaa" , "12345678"));
+
 
         Response rezult = new RegistrationController(users).register("aaa" , "12345678");
 
