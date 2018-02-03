@@ -5,17 +5,20 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class RegistrationControllerTest {
+
     private UserStorage users = new UserStorage();
 
     @Test
-    public void shuoldRegisterNewUser()
-    {
+    public void shuoldRegisterNewUser() throws IOException {
         RegistrationController registrationController = new RegistrationController(users);
         Response rezult = registrationController.register("franklin", "12345555");
 
@@ -24,7 +27,7 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shuoldReturnErrorWhenPasswordToShor() {
+    public void shuoldReturnErrorWhenPasswordToShor() throws IOException {
         Response rezult = new RegistrationController(users).register("frani" , "123456");
 
         assertEquals("password is too short" , rezult.getMassage());
@@ -33,7 +36,7 @@ public class RegistrationControllerTest {
     }
 
     @Test
-    public void shuoldReturnErrorWhenUserExist() {
+    public void shuoldReturnErrorWhenUserExist() throws IOException {
 
 
         users.add(new User("aaa" , "12345678"));

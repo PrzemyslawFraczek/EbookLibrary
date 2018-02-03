@@ -4,6 +4,8 @@ package sda.java7krk.pl.ebook.View;
     private boolean success;
     private String massage;
 
+
+
      public String getMassage() {
          return massage;
      }

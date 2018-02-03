@@ -22,7 +22,7 @@ public class LoginControllerTest {
     private LoginController loginController = new LoginController(users);
 
     @Before
-    public void creatUser() {
+    public void createUser() {
         users.add(new User(GOOD_LOGIN, GOOD_PASSWORD));
     }
 

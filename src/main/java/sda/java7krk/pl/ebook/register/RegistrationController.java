@@ -1,18 +1,24 @@
 package sda.java7krk.pl.ebook.register;
 
 
-import sda.java7krk.pl.ebook.domena.User;
+import sda.java7krk.pl.ebook.domena.SevingToFile;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.*;
+
 public class RegistrationController {
     private UserStorage users;
+    private SevingToFile save = new SevingToFile(users) ;
 
 
-    public RegistrationController(UserStorage users) {
+
+
+    public RegistrationController(UserStorage users) throws IOException {
         this.users = users;
     }
-    public Response register(String name, String password) {
+
+    public Response register(String name, String password) throws IOException {
         Response response = new Response();
 
         if (isPasswordTooShort(password)) {
@@ -27,8 +33,7 @@ public class RegistrationController {
         }  else {
             response.setSuccess(true);
             response.setMassage("Well done !!");
-            users.add(new User(name,password));
-
+            save.save(name,password);
         }
 
 

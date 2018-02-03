@@ -6,23 +6,24 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import sda.java7krk.pl.ebook.register.RegistrationController;
 import sda.java7krk.pl.ebook.register.RegistrationPanel;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class StartPanel {
-    private RegistrationController registrationController;
     private LoginPanel loginPanel;
     private RegistrationPanel registrationPanel;
 
     private Scanner scanner = new Scanner(System.in);
 
-    public StartPanel(UserStorage userStorage) {
-        registrationController = new RegistrationController(userStorage);
+    public StartPanel(UserStorage userStorage) throws IOException {
+        RegistrationController registrationController = new RegistrationController(userStorage);
         registrationPanel = new RegistrationPanel(registrationController);
         LoginController loginController = new LoginController(userStorage);
         loginPanel = new LoginPanel(loginController);
     }
 
-    public void startPanel() {
+    public void startPanel() throws IOException {
         int answer = 0;
         do {
             System.out.println("1 - sing in ");

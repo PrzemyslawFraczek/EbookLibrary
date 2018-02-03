@@ -2,6 +2,7 @@ package sda.java7krk.pl.ebook.register;
 
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class RegistrationPanel {
@@ -14,12 +15,11 @@ public class RegistrationPanel {
         this.registrationController = registrationController;
     }
 
-    public String registration(){
+    public Response registration() throws IOException {
         System.out.println("Give me Login");
         String login = scanner.next();
         System.out.println("Give me password");
         String pasw = scanner.next();
-        Response response = registrationController.register(login, pasw);
-        return response.getMassage();
+        return registrationController.register(login, pasw);
     }
 }
