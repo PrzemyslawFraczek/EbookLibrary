@@ -32,7 +32,7 @@ public class StartPanel {
             answer = scanner.nextInt();
 
             if (answer == 1) {
-                System.out.println(registrationPanel.registration());
+                System.out.println(registrationPanel.registration().getMassage());
 
             }
             if (answer == 2) {

@@ -5,7 +5,6 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;

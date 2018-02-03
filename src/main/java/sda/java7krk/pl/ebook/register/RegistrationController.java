@@ -1,7 +1,7 @@
 package sda.java7krk.pl.ebook.register;
 
 
-import sda.java7krk.pl.ebook.domena.SevingToFile;
+
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import sda.java7krk.pl.ebook.View.Response;
 
@@ -9,11 +9,7 @@ import java.io.*;
 
 public class RegistrationController {
     private UserStorage users;
-    private SevingToFile save = new SevingToFile(users) ;
-
-
-
-
+    private UserStorage save = new UserStorage() ;
     public RegistrationController(UserStorage users) throws IOException {
         this.users = users;
     }

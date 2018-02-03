@@ -1,34 +1,27 @@
 package sda.java7krk.pl.ebook.domena;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.*;
 
 public class UserStorage {
-    private Map<String, User> users = new HashMap<String, User>();
 
-//
-//    public User[] mapToArray() {
-//        User[] arrayUsers = new User[users.size()];
-//        for(Map.Entry<String, User> entry : users.entrySet()) {
-//            entry.getValue();
-//        }
-//
-//    }
-    public void add(User user) {
-        users.put(user.getName(), user);
-    }
+    private File file = new File("user.txt");
 
-    public boolean userExist(String name) {
-        return users.containsKey(name);
+    public void save(String name, String password) throws IOException {
 
-    }
+        PrintWriter addingToFile = new PrintWriter(new FileOutputStream(file, true));
+        BufferedWriter bw = new BufferedWriter(addingToFile);
 
-    public boolean userExist(String name, String password) {
-        if (userExist(name)) {
-            return users.get(name).getPassword().equals(password);
+        String record = name + " ; " + password;
+        try {
+            bw.write(record + '\n');
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return false;
     }
 
+    public boolean userExist(String name){
+        
+    }
 
 }
