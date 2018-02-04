@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 
 public class LoginController {
     private UserStorage users ;
-    ;
+
 
     public LoginController(UserStorage users ) {
         this.users = users;

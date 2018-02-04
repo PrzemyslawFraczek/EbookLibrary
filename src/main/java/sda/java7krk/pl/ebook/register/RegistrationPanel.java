@@ -9,7 +9,7 @@ public class RegistrationPanel {
     private RegistrationController registrationController;
 
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public RegistrationPanel(RegistrationController registrationController) {
         this.registrationController = registrationController;

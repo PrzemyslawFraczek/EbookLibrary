@@ -12,42 +12,57 @@ public class UserStorage {
     }
 
     public void save(String name, String password) throws IOException {
-
-        PrintWriter addingToFile = new PrintWriter(new FileOutputStream(file, true));
+        FileOutputStream fos = new FileOutputStream(file, true);
+        PrintWriter addingToFile = new PrintWriter(fos, true);
         BufferedWriter bw = new BufferedWriter(addingToFile);
 
         String record = name + ";" + password;
         try {
-            bw.write(record );
+            bw.write(record);
             bw.newLine();
+
             bw.close();
+            addingToFile.close();
+            fos.close();
         } catch (IOException e) {
+
             e.printStackTrace();
         }
     }
 
     public boolean userExist(String name) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNext()){
-            String newLine = scanner.nextLine();
-            String[] str = newLine.split(";");
-            if (str[0].equals(name)) {
-                return true;
+        if(file.exists()) {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String newLine = scanner.nextLine();
+                String[] str = newLine.split(";");
+                if (str[0].equals(name)) {
+                    scanner.close();
+                    return true;
+                }
             }
+            scanner.close();
+            return false;
+        } else {
+            return false;
         }
-        return false;
-
     }
     public boolean userExist(String name , String passwod) throws FileNotFoundException {
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNext()){
-            String newLine = scanner.nextLine();
-            String[] str = newLine.split(";");
-            if (str[0].equals(name) && str[1].equals(passwod)) {
-                return true;
+        if(file.exists()) {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String newLine = scanner.nextLine();
+                String[] str = newLine.split(";");
+                if (str[0].equals(name) && str[1].equals(passwod)) {
+                    scanner.close();
+                    return true;
+                }
             }
+            scanner.close();
+            return false;
+        } else {
+            return false;
         }
-        return false;
     }
 
 }

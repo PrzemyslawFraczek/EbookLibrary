@@ -34,10 +34,6 @@ public class LoginControllerTest {
         loginController = new LoginController(users);
     }
 
-    @After
-    public void delete(){
-        file.deleteOnExit();
-    }
 
 
     @Test

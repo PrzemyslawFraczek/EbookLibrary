@@ -8,7 +8,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        UserStorage userStorage = new UserStorage(new File("user.txt"));
+        File file = new File("user.txt");
+        UserStorage userStorage = new UserStorage(file);
 
 
         new StartPanel(userStorage).startPanel();

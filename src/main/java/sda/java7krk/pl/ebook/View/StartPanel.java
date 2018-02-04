@@ -38,7 +38,9 @@ public class StartPanel {
             if (answer == 2) {
                 System.out.println(loginPanel.login());
             }
+
         } while (answer != 3);
+
 
     }
 

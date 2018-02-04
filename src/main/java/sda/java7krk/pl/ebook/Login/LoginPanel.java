@@ -12,7 +12,7 @@ public class LoginPanel {
         this.loginController = loginController;
     }
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public String login() throws FileNotFoundException {
         System.out.println("Give me Login");

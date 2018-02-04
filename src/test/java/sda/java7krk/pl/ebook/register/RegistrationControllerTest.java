@@ -9,6 +9,8 @@ import sda.java7krk.pl.ebook.View.Response;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -22,12 +24,13 @@ public class RegistrationControllerTest {
 
     @Before
     public void setup() {
-        users = new UserStorage( file = new File("testUsers.txt"));
+        file = new File("testUsers.txt");
+        users = new UserStorage(file);
     }
 
     @After
-    public void deleteFile(){
-       file.deleteOnExit();
+    public void deleteFile() throws Exception {
+        Files.deleteIfExists(file.toPath());
     }
 
     @Test
