@@ -1,5 +1,6 @@
 package sda.java7krk.pl.ebook.register;
 
+import org.junit.After;
 import org.junit.Before;
 import sda.java7krk.pl.ebook.Login.LoginController;
 import sda.java7krk.pl.ebook.domena.User;
@@ -7,6 +8,7 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -21,9 +23,21 @@ public class LoginControllerTest {
     private static final String WRONG_LOGIN = "wrongLogin";
     private static final String PASSWORD_OR_LOGIN_INCORECT = "Password or login incorect";
 
-    private UserStorage users = new UserStorage();
-    private LoginController loginController = new LoginController(users);
+    private UserStorage users;
+    private LoginController loginController;
+    private File file ;
 
+    @Before
+    public void setup() {
+
+        users = new UserStorage(file = new File("testUsers.txt"));
+        loginController = new LoginController(users);
+    }
+
+    @After
+    public void delete(){
+        file.deleteOnExit();
+    }
 
 
     @Test
@@ -44,8 +58,8 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenLoginSucces() throws FileNotFoundException {
-
+    public void shouldReturnTrueWhenLoginSucces() throws IOException {
+        users.save(GOOD_LOGIN , GOOD_PASSWORD);
         Response result = loginController.checkLogin(GOOD_LOGIN, GOOD_PASSWORD);
 
         assertEquals(true, result.isSuccess());

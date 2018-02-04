@@ -5,15 +5,10 @@ import java.util.Scanner;
 
 public class UserStorage {
 
-    private UserStorage users;
-    private File file = new File("user.txt");
+    private File file;
 
-    public UserStorage(UserStorage users) {
-        this.users = users;
-    }
-
-    public UserStorage() {
-
+    public UserStorage(File file) {
+        this.file = file;
     }
 
     public void save(String name, String password) throws IOException {
@@ -32,7 +27,7 @@ public class UserStorage {
     }
 
     public boolean userExist(String name) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("user.txt"));
+        Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             String newLine = scanner.nextLine();
             String[] str = newLine.split(";");
@@ -44,7 +39,7 @@ public class UserStorage {
 
     }
     public boolean userExist(String name , String passwod) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File("user.txt"));
+        Scanner scanner = new Scanner(file);
         while (scanner.hasNext()){
             String newLine = scanner.nextLine();
             String[] str = newLine.split(";");

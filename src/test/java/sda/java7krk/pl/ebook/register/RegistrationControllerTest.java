@@ -1,5 +1,7 @@
 package sda.java7krk.pl.ebook.register;
 
+import org.junit.After;
+import org.junit.Before;
 import sda.java7krk.pl.ebook.domena.User;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
@@ -15,8 +17,18 @@ import static org.junit.Assert.assertTrue;
 
 public class RegistrationControllerTest {
 
-    private UserStorage users = new UserStorage();
-    private File fileTest = new File("testUsers.txt");
+    private UserStorage users;
+    private File file ;
+
+    @Before
+    public void setup() {
+        users = new UserStorage( file = new File("testUsers.txt"));
+    }
+
+    @After
+    public void deleteFile(){
+       file.deleteOnExit();
+    }
 
     @Test
     public void shuoldRegisterNewUser() throws IOException {
@@ -41,7 +53,7 @@ public class RegistrationControllerTest {
 
 
 
-
+        users.save("aaa" , "12345678");
         Response rezult = new RegistrationController(users).register("aaa" , "12345678");
 
         assertEquals("User exist, change name or password" , rezult.getMassage());

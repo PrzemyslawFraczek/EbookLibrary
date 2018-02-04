@@ -9,7 +9,8 @@ import java.io.*;
 
 public class RegistrationController {
     private UserStorage users;
-    private UserStorage save = new UserStorage(users) ;
+
+
     public RegistrationController(UserStorage users) throws IOException {
         this.users = users;
     }
@@ -29,7 +30,7 @@ public class RegistrationController {
         }  else {
             response.setSuccess(true);
             response.setMassage("Well done !!");
-            save.save(name,password);
+            users.save(name,password);
         }
         return response;
     }
