@@ -1,5 +1,7 @@
 package sda.java7krk.pl.ebook;
 
+import com.sun.corba.se.pept.transport.ContactInfoList;
+import sda.java7krk.pl.ebook.View.CliSystemInterface;
 import sda.java7krk.pl.ebook.View.StartPanel;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 
@@ -12,6 +14,7 @@ public class Main {
         UserStorage userStorage = new UserStorage(file);
 
 
-        new StartPanel(userStorage).startPanel();
+        CliSystemInterface systemInterface = new CliSystemInterface();
+        new StartPanel(userStorage, systemInterface).startPanel();
     }
 }

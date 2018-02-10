@@ -6,7 +6,6 @@ import sda.java7krk.pl.ebook.domena.UserStorage;
 import sda.java7krk.pl.ebook.register.RegistrationController;
 import sda.java7krk.pl.ebook.register.RegistrationPanel;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -15,33 +14,39 @@ public class StartPanel {
     private RegistrationPanel registrationPanel;
 
     private Scanner scanner = new Scanner(System.in);
+    private final SystemInterface systemInterface;
 
-    public StartPanel(UserStorage userStorage) throws IOException {
+    public StartPanel(UserStorage userStorage, SystemInterface systemInterface) throws IOException {
+        this.systemInterface = systemInterface;
         RegistrationController registrationController = new RegistrationController(userStorage);
-        registrationPanel = new RegistrationPanel(registrationController);
+        registrationPanel = new RegistrationPanel(registrationController, this.systemInterface);
         LoginController loginController = new LoginController(userStorage);
-        loginPanel = new LoginPanel(loginController);
+        loginPanel = new LoginPanel(loginController, this.systemInterface);
     }
 
     public void startPanel() throws IOException {
         int answer = 0;
         do {
-            System.out.println("1 - sing in ");
-            System.out.println("2 - login");
-            System.out.println("3 - Exit");
-            answer = scanner.nextInt();
+            systemInterface.display("1 - sing in ");
+            systemInterface.display("2 - login");
+            systemInterface.display("3 - Exit");
+            answer = systemInterface.nextInt();
 
             if (answer == 1) {
-                System.out.println(registrationPanel.registration().getMassage());
+                systemInterface.display(registrationPanel.registration().getMassage());
 
             }
             if (answer == 2) {
-                System.out.println(loginPanel.login());
+                systemInterface.display(loginPanel.login());
             }
 
         } while (answer != 3);
 
 
+    }
+
+    private void display(String s) {
+        System.out.println(s);
     }
 
 }
