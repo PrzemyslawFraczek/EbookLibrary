@@ -1,0 +1,71 @@
+package sda.java7krk.pl.ebook.domena;
+
+import java.io.*;
+import java.util.Scanner;
+
+class FileUserStorage implements UserStorage {
+
+    private File file;
+
+    FileUserStorage(File file) {
+        this.file = file;
+    }
+
+    @Override
+    public void save(String name, String password) throws IOException {
+        FileOutputStream fos = new FileOutputStream(file, true);
+        PrintWriter addingToFile = new PrintWriter(fos, true);
+        BufferedWriter bw = new BufferedWriter(addingToFile);
+
+        String record = name + ";" + password;
+        try {
+            bw.write(record);
+            bw.newLine();
+
+            bw.close();
+            addingToFile.close();
+            fos.close();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean userExist(String name) throws FileNotFoundException {
+        if(file.exists()) {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String newLine = scanner.nextLine();
+                String[] str = newLine.split(";");
+                if (str[0].equals(name)) {
+                    scanner.close();
+                    return true;
+                }
+            }
+            scanner.close();
+            return false;
+        } else {
+            return false;
+        }
+    }
+    @Override
+    public boolean userExist(String name, String password) throws FileNotFoundException {
+        if(file.exists()) {
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNext()) {
+                String newLine = scanner.nextLine();
+                String[] str = newLine.split(";");
+                if (str[0].equals(name) && str[1].equals(password)) {
+                    scanner.close();
+                    return true;
+                }
+            }
+            scanner.close();
+            return false;
+        } else {
+            return false;
+        }
+    }
+
+}

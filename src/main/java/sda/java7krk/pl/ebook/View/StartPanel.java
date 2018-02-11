@@ -16,7 +16,7 @@ public class StartPanel {
     private Scanner scanner = new Scanner(System.in);
     private final SystemInterface systemInterface;
 
-    public StartPanel(UserStorage userStorage, SystemInterface systemInterface) throws IOException {
+    public StartPanel(UserStorage userStorage, SystemInterface systemInterface) {
         this.systemInterface = systemInterface;
         RegistrationController registrationController = new RegistrationController(userStorage);
         registrationPanel = new RegistrationPanel(registrationController, this.systemInterface);

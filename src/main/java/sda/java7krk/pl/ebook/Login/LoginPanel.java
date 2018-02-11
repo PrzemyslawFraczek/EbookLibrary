@@ -24,4 +24,19 @@ public class LoginPanel {
         Response response = loginController.checkLogin(login, pasw);
         return response.getMassage();
     }
+
+    public void loginExample() throws FileNotFoundException {
+        systemInterface.display("Give me Login");
+        String login = systemInterface.readInformation();
+        systemInterface.display("Give me password");
+        String pasw = systemInterface.readInformation();
+        Response response = loginController.checkLogin(login, pasw);
+
+        if (response.isSuccess()){
+            systemInterface.display("Welcome in system !");
+        }else {
+            systemInterface.display("Password or login incorect");
+        }
+
+    }
 }
