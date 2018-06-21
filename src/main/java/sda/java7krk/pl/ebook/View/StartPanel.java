@@ -16,14 +16,9 @@ public class StartPanel {
     private Scanner scanner = new Scanner(System.in);
     private final SystemInterface systemInterface;
 
-    public StartPanel(UserStorage userStorage, SystemInterface systemInterface)  {
+    public StartPanel(UserStorage userStorage, SystemInterface systemInterface) {
         this.systemInterface = systemInterface;
-        RegistrationController registrationController = null;
-        try {
-            registrationController = new RegistrationController(userStorage);
-        } catch (IOException e) {
-            //e.printStackTrace();
-        }
+        RegistrationController registrationController = new RegistrationController(userStorage);
         registrationPanel = new RegistrationPanel(registrationController, this.systemInterface);
         LoginController loginController = new LoginController(userStorage);
         loginPanel = new LoginPanel(loginController, this.systemInterface);

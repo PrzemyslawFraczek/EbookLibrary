@@ -16,7 +16,7 @@ public class LoginPanel {
         this.systemInterface = systemInterface;
     }
 
-        public String login() throws FileNotFoundException {
+    public String login() throws FileNotFoundException {
         systemInterface.display("Give me Login");
         String login = systemInterface.readInformation();
         systemInterface.display("Give me password");
@@ -25,5 +25,18 @@ public class LoginPanel {
         return response.getMassage();
     }
 
+    public void loginExample() throws FileNotFoundException {
+        systemInterface.display("Give me Login");
+        String login = systemInterface.readInformation();
+        systemInterface.display("Give me password");
+        String pasw = systemInterface.readInformation();
+        Response response = loginController.checkLogin(login, pasw);
 
+        if (response.isSuccess()){
+            systemInterface.display("Welcome in system !");
+        }else {
+            systemInterface.display("Password or login incorect");
+        }
+
+    }
 }

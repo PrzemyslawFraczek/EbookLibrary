@@ -11,7 +11,7 @@ public class RegistrationController {
     private UserStorage users;
 
 
-    public RegistrationController(UserStorage users) throws IOException {
+    public RegistrationController(UserStorage users) {
         this.users = users;
     }
 

@@ -8,5 +8,5 @@ public interface UserStorage {
 
     boolean userExist(String name) throws FileNotFoundException;
 
-    boolean userExist(String name, String passwod) throws FileNotFoundException;
+    boolean userExist(String name, String password) throws FileNotFoundException;
 }

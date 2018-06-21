@@ -1,11 +1,12 @@
-package sda.java7krk.pl.ebook.register;
+package sda.java7krk.pl.ebook.register.loginTest;
 
 import org.junit.Before;
 import sda.java7krk.pl.ebook.Login.LoginController;
-import sda.java7krk.pl.ebook.domena.FileUserStorage;
+
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
+import sda.java7krk.pl.ebook.domena.UserStorageFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,12 +25,11 @@ public class LoginControllerTest {
 
     private UserStorage users;
     private LoginController loginController;
-    private File file ;
-
+    private UserStorageFactory userStorageFactory = new UserStorageFactory() ;
     @Before
     public void setup() {
 
-        users = new FileUserStorage(file = new File("testUsers.txt"));
+        users = userStorageFactory.creatorFileUserStorage("testUser.txt");
         loginController = new LoginController(users);
     }
 

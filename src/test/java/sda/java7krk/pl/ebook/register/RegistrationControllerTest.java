@@ -2,10 +2,12 @@ package sda.java7krk.pl.ebook.register;
 
 import org.junit.After;
 import org.junit.Before;
-import sda.java7krk.pl.ebook.domena.FileUserStorage;
+
+
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
+import sda.java7krk.pl.ebook.domena.UserStorageFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,11 +22,12 @@ public class RegistrationControllerTest {
 
     private UserStorage users;
     private File file ;
+    private UserStorageFactory userStorageFactory =  new UserStorageFactory();
 
     @Before
     public void setup() {
         file = new File("testUsers.txt");
-        users = new FileUserStorage(file);
+        users = userStorageFactory.creatorFileUserStorage("testUsers.txt");
     }
 
     @After
