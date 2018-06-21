@@ -1,9 +1,8 @@
 package sda.java7krk.pl.ebook.register;
 
-import org.junit.After;
 import org.junit.Before;
 import sda.java7krk.pl.ebook.Login.LoginController;
-import sda.java7krk.pl.ebook.domena.User;
+import sda.java7krk.pl.ebook.domena.FileUserStorage;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
@@ -30,7 +29,7 @@ public class LoginControllerTest {
     @Before
     public void setup() {
 
-        users = new UserStorage(file = new File("testUsers.txt"));
+        users = new FileUserStorage(file = new File("testUsers.txt"));
         loginController = new LoginController(users);
     }
 

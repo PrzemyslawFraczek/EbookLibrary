@@ -15,22 +15,26 @@ public class RegistrationController {
         this.users = users;
     }
 
-    public Response register(String name, String password) throws IOException {
+    public Response register(String name, String password)  {
         Response response = new Response();
 
         if (isPasswordTooShort(password)) {
             response.setSuccess(false);
             response.setMassage("password is too short");
 
-        }else if (users.userExist(name)) {
-            response.setSuccess(false);
-            response.setMassage("User exist, change name or password");
+        }else try {
+            if (users.userExist(name)) {
+                response.setSuccess(false);
+                response.setMassage("User exist, change name or password");
 
 
-        }  else {
-            response.setSuccess(true);
-            response.setMassage("Well done !!");
-            users.save(name,password);
+            }  else {
+                response.setSuccess(true);
+                response.setMassage("Well done !!");
+                users.save(name,password);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return response;
     }

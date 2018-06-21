@@ -13,7 +13,7 @@ public class CliSystemInterface implements SystemInterface {
 
     @Override
     public String readInformation() {
-        return scanner.nextLine();
+        return scanner.next();
     }
 
     @Override

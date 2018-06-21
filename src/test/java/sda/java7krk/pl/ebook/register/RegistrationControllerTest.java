@@ -2,7 +2,7 @@ package sda.java7krk.pl.ebook.register;
 
 import org.junit.After;
 import org.junit.Before;
-import sda.java7krk.pl.ebook.domena.User;
+import sda.java7krk.pl.ebook.domena.FileUserStorage;
 import sda.java7krk.pl.ebook.domena.UserStorage;
 import org.junit.Test;
 import sda.java7krk.pl.ebook.View.Response;
@@ -10,7 +10,6 @@ import sda.java7krk.pl.ebook.View.Response;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -25,7 +24,7 @@ public class RegistrationControllerTest {
     @Before
     public void setup() {
         file = new File("testUsers.txt");
-        users = new UserStorage(file);
+        users = new FileUserStorage(file);
     }
 
     @After
